@@ -1,0 +1,30 @@
+
+
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    env_file: .env
+    ports:
+      - "8000:8000"
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: spotify
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./backend/hls:/app/hls
+    ports:
+      - "80:80"
+
+volumes:
+  pgdata:
