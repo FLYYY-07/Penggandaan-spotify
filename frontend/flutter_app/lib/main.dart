@@ -12,17 +12,44 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false, //delete Debug
+//       title: 'Spotify Clone',
+//       home: Scaffold(
+//         appBar: AppBar(title: const Text("Spotify Clone")),
+//         body: const Center(child: Text("Supabase Initialized")),
+//         backgroundColor: Colors.redAccent
+//       ),
+//     );
+//   }
+// }
+
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Spotify Clone',
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Spotify Clone")),
-        body: const Center(child: Text("Supabase Initialized")),
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'My App',
+      home: MyHomePage(), // Or use Scaffold directly here
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.red,
+      appBar: AppBar(title: Text("Hello")),
+      body: Center(child: Text("This works")),
     );
   }
 }
